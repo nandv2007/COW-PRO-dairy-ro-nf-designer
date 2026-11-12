@@ -1,0 +1,27 @@
+services:
+  backend:
+    image: python:3.13-slim
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+    command: >
+      sh -c "pip install --no-cache-dir -r requirements.txt &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000"
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=development
+      - CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+
+  frontend:
+    image: node:22-alpine
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    command: sh -c "npm install && npm run dev -- -p 3000"
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      - backend
