@@ -68,9 +68,9 @@ COW PRO includes a ready-to-deploy [`render.yaml`](./render.yaml) Render Bluepri
 ### Steps to Deploy on Render
 1. Push this repository to GitHub:
    ```bash
-   git remote add origin https://github.com/<your-username>/cow-pro.git
+   git remote add origin https://github.com/nandv2007/COW-PRO-dairy-ro-nf-designer.git
    git push -u origin main
    ```
 2. Open [Render Blueprints](https://dashboard.render.com/blueprints) → **New Blueprint Instance**.
-3. Connect your GitHub repository containing `render.yaml` and click **Apply**.
+3. Connect the `COW-PRO-dairy-ro-nf-designer` repository containing `render.yaml` and click **Apply**.
 4. Wait for `cowpro-db`, `cowpro-api` (`/api/health`), and `cowpro-web` (`/login`) to finish deploying, then open your `.onrender.com` URL.
