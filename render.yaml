@@ -18,7 +18,7 @@ services:
     healthCheckPath: /api/health
     envVars:
       - key: PYTHON_VERSION
-        value: 3.12.8
+        value: "3.12.8"
       - key: ENVIRONMENT
         value: production
       - key: JWT_SECRET_KEY
@@ -39,14 +39,12 @@ services:
     runtime: node
     plan: free
     rootDir: frontend
-    buildCommand: npm ci && npm run build
+    buildCommand: npm ci --include=dev && npm run build
     startCommand: npm run start -- -H 0.0.0.0 -p $PORT
     healthCheckPath: /login
     envVars:
       - key: NODE_VERSION
-        value: 22.14.0
-      - key: NODE_ENV
-        value: production
+        value: "22.14.0"
       - key: BACKEND_URL
         fromService:
           type: web
